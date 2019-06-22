@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   `category` varchar(255),
   `manufacture` varchar(20),
   `model_number` varchar(255),
-  `price` int(16),
+  `price` float(11, 2),
   `count` int(11) NOT NULL,
   `location` varchar(255),
   `image` varchar(255),
