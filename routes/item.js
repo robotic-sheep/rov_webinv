@@ -3,7 +3,7 @@ const fs = require('fs');
 module.exports = {
     addItemPage: (req, res) => {
         res.render('add-item.ejs', {
-            title: 'Welcome to Socka | Add a new item'
+            title: 'VCS MATE ROV'
             ,message: ''
         });
     },
@@ -30,10 +30,10 @@ module.exports = {
                 return res.status(500).send(err);
             }
             if (result.length > 0) {
-                message = 'Username already exists';
+                message = 'Item already exists';
                 res.render('add-item.ejs', {
                     message,
-                    title: 'Welcome to Socka | Add a new item'
+                    title: 'VCS MATE ROV'
                 });
             } else {
                 // check the filetype before uploading it
@@ -57,7 +57,7 @@ module.exports = {
                     message = "Invalid File format. Only 'gif', 'jpeg' and 'png' images are allowed.";
                     res.render('add-item.ejs', {
                         message,
-                        title: 'Welcome to Socka | Add a new item'
+                        title: 'VCS MATE ROV'
                     });
                 }
             }
@@ -118,4 +118,3 @@ module.exports = {
         });
     }
 };
-
