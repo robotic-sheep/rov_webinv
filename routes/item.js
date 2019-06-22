@@ -13,17 +13,19 @@ module.exports = {
         }
 
         let message = '';
-        let first_name = req.body.first_name;
-        let last_name = req.body.last_name;
-        let position = req.body.position;
-        let number = req.body.number;
-        let username = req.body.username;
+        let item_name = req.body.item_name;
+        let category = req.body.category;
+        let manufacture = req.body.manufacture;
+        let model_number = req.body.model_number;
+        let price = req.body.price;
+	let count = req.body.count;
+	let location = req.body.location;
         let uploadedFile = req.files.image;
         let image_name = uploadedFile.name;
         let fileExtension = uploadedFile.mimetype.split('/')[1];
-        image_name = username + '.' + fileExtension;
+        image_name = item_name + '.' + fileExtension;
 
-        let usernameQuery = "SELECT * FROM `items` WHERE user_name = '" + username + "'";
+        let usernameQuery = "SELECT * FROM `inventory` WHERE item_name = '" + item_name + "'";
 
         db.query(usernameQuery, (err, result) => {
             if (err) {
@@ -44,8 +46,8 @@ module.exports = {
                             return res.status(500).send(err);
                         }
                         // send the item's details to the database
-                        let query = "INSERT INTO `items` (first_name, last_name, position, number, image, user_name) VALUES ('" +
-                            first_name + "', '" + last_name + "', '" + position + "', '" + number + "', '" + image_name + "', '" + username + "')";
+                        let query = "INSERT INTO `inventory` (item_name, category, manufacture, model_number, price, count, location, image) VALUES ('" +
+                            item_name + "', '" + category + "', '" + manufacture + "', '" + model_number + "', '" + price + "', '" + count + "',  '" + location + "', '" + image_name + "')";
                         db.query(query, (err, result) => {
                             if (err) {
                                 return res.status(500).send(err);
@@ -65,7 +67,7 @@ module.exports = {
     },
     editItemPage: (req, res) => {
         let itemId = req.params.id;
-        let query = "SELECT * FROM `items` WHERE id = '" + itemId + "' ";
+        let query = "SELECT * FROM `inventory` WHERE id = '" + itemId + "' ";
         db.query(query, (err, result) => {
             if (err) {
                 return res.status(500).send(err);
@@ -79,12 +81,15 @@ module.exports = {
     },
     editItem: (req, res) => {
         let itemId = req.params.id;
-        let first_name = req.body.first_name;
-        let last_name = req.body.last_name;
-        let position = req.body.position;
-        let number = req.body.number;
+        let item_name = req.body.item_name;
+        let category = req.body.category;
+        let manufacture = req.body.manufacture;
+        let model_number = req.body.model_number;
+        let price = req.body.price;
+ 	let count = req.body.count;
+	let location = req.body.location;
 
-        let query = "UPDATE `items` SET `first_name` = '" + first_name + "', `last_name` = '" + last_name + "', `position` = '" + position + "', `number` = '" + number + "' WHERE `items`.`id` = '" + itemId + "'";
+        let query = "UPDATE `inventory` SET `item_name` = '" + item_name + "', `category` = '" + category + "', `manufacture` = '" + manufacture + "', `model_number` = '" + model_number + "' , `price` = '" + price + "' , `count` = '" + count + "' , `location` = '" + location + "'  WHERE `items`.`id` = '" + itemId + "'";
         db.query(query, (err, result) => {
             if (err) {
                 return res.status(500).send(err);
@@ -95,7 +100,7 @@ module.exports = {
     deleteItem: (req, res) => {
         let itemId = req.params.id;
         let getImageQuery = 'SELECT image from `items` WHERE id = "' + itemId + '"';
-        let deleteUserQuery = 'DELETE FROM items WHERE id = "' + itemId + '"';
+        let deleteUserQuery = 'DELETE FROM inventory WHERE id = "' + itemId + '"';
 
         db.query(getImageQuery, (err, result) => {
             if (err) {
