@@ -3,7 +3,7 @@ const fs = require('fs');
 module.exports = {
     addPlayerPage: (req, res) => {
         res.render('add-player.ejs', {
-            title: 'VCS MATE ROV'
+            title: 'Welcome to Socka | Add a new player'
             ,message: ''
         });
     },
@@ -13,27 +13,27 @@ module.exports = {
         }
 
         let message = '';
-        let item_name = req.body.item_name;
-        let location = req.body.location;
+        let first_name = req.body.first_name;
+        let last_name = req.body.last_name;
         let position = req.body.position;
         let number = req.body.number;
-        let item_details = req.body.item_details;
+        let username = req.body.username;
         let uploadedFile = req.files.image;
         let image_name = uploadedFile.name;
         let fileExtension = uploadedFile.mimetype.split('/')[1];
-        image_name = item_details + '.' + fileExtension;
+        image_name = username + '.' + fileExtension;
 
-        let usernameQuery = "SELECT * FROM `players` WHERE user_name = '" + item_details + "'";
+        let usernameQuery = "SELECT * FROM `players` WHERE user_name = '" + username + "'";
 
         db.query(usernameQuery, (err, result) => {
             if (err) {
                 return res.status(500).send(err);
             }
             if (result.length > 0) {
-                message = 'Item already exists';
+                message = 'Username already exists';
                 res.render('add-player.ejs', {
                     message,
-                    title: 'VCS MATE ROV'
+                    title: 'Welcome to Socka | Add a new player'
                 });
             } else {
                 // check the filetype before uploading it
@@ -44,8 +44,8 @@ module.exports = {
                             return res.status(500).send(err);
                         }
                         // send the player's details to the database
-                        let query = "INSERT INTO `players` (item_name, location, position, number, image, user_name) VALUES ('" +
-                            item_name + "', '" + location + "', '" + position + "', '" + number + "', '" + image_name + "', '" + item_details + "')";
+                        let query = "INSERT INTO `players` (first_name, last_name, position, number, image, user_name) VALUES ('" +
+                            first_name + "', '" + last_name + "', '" + position + "', '" + number + "', '" + image_name + "', '" + username + "')";
                         db.query(query, (err, result) => {
                             if (err) {
                                 return res.status(500).send(err);
@@ -57,7 +57,7 @@ module.exports = {
                     message = "Invalid File format. Only 'gif', 'jpeg' and 'png' images are allowed.";
                     res.render('add-player.ejs', {
                         message,
-                        title: 'VCS MATE ROV'
+                        title: 'Welcome to Socka | Add a new player'
                     });
                 }
             }
@@ -71,7 +71,7 @@ module.exports = {
                 return res.status(500).send(err);
             }
             res.render('edit-player.ejs', {
-                title: 'Edit  Item'
+                title: 'Edit  Player'
                 ,player: result[0]
                 ,message: ''
             });
@@ -79,12 +79,12 @@ module.exports = {
     },
     editPlayer: (req, res) => {
         let playerId = req.params.id;
-        let item_name = req.body.item_name;
-        let location = req.body.location;
+        let first_name = req.body.first_name;
+        let last_name = req.body.last_name;
         let position = req.body.position;
         let number = req.body.number;
 
-        let query = "UPDATE `players` SET `item_name` = '" + item_name + "', `location` = '" + location + "', `position` = '" + position + "', `number` = '" + number + "' WHERE `players`.`id` = '" + playerId + "'";
+        let query = "UPDATE `players` SET `first_name` = '" + first_name + "', `last_name` = '" + last_name + "', `position` = '" + position + "', `number` = '" + number + "' WHERE `players`.`id` = '" + playerId + "'";
         db.query(query, (err, result) => {
             if (err) {
                 return res.status(500).send(err);
@@ -118,3 +118,4 @@ module.exports = {
         });
     }
 };
+
