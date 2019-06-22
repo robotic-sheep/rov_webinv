@@ -1,6 +1,6 @@
 module.exports = {
     getHomePage: (req, res) => {
-        let query = "SELECT * FROM `players` ORDER BY id ASC"; // query database to get all the players
+        let query = "SELECT * FROM `inventory` ORDER BY id ASC"; // query database to get all the items
 
         // execute query
         db.query(query, (err, result) => {
@@ -9,7 +9,7 @@ module.exports = {
             }
             res.render('index.ejs', {
                 title: 'VCS MATE ROV'
-                ,players: result
+                ,items: result
             });
         });
     },

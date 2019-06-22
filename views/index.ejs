@@ -1,32 +1,36 @@
 <% include partials/header.ejs %>
     <div class="table-wrapper">
-        <% if (players.length > 0) {%>
+        <% if (items.length > 0) {%>
             <table class="table table-hovered">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Image</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Position</th>
-                        <th scope="col">Number</th>
-                        <th scope="col">item_details</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Manufacture</th>
+                        <th scope="col">Model_Number</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Count</th>
+                        <th scope="col">Location</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% players.forEach((player, index) => { %>
+                    <% items.forEach((item, index) => { %>
                         <tr>
-                            <th scope="row"><%= player.id %></th>
-                            <td><img src="/assets/img/<%= player.image %>" class="rounded-circle player-img" alt=""></td>
-                            <td><%= player.item_name %></td>
-                            <td><%= player.location %></td>
-                            <td><%= player.position %></td>
-                            <td><%= player.number %></td>
-                            <td>@<%= player.user_name %></td>
+                            <th scope="row"><%= item.id %></th>
+                            <td><img src="/assets/img/<%= item.image %>" class="rounded-circle item-img" alt=""></td>
+                            <td><%= item.item_name %></td>
+                            <td><%= item.category %></td>
+                            <td><%= item.manufacture %></td>
+                            <td><%= item.model_number %></td>
+                            <td><%= item.price %></td>
+                            <td><%= item.count %></td>
+                            <td><%= item.location %></td>
                             <td>
-                                <a href="/edit/<%= player.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
-                                <a href="/delete/<%= player.id %>" class="btn btn-sm btn-danger">Delete</a>
+                                <a href="/edit/<%= item.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/delete/<%= item.id %>" class="btn btn-sm btn-danger">Delete</a>
                             </td>
                         </tr>
                     <% }) %>

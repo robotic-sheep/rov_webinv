@@ -3,7 +3,7 @@
         <% if (message != '') { %>
             <p class="text-center text-danger"><%= message %></p>
         <% } %>
-        <form class="add-player-form" action="" method="post" enctype="multipart/form-data">
+        <form class="add-item-form" action="" method="post" enctype="multipart/form-data">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <input type="text" class="form-control" name="item_name" id="item_name" placeholder="Item Name" required>
@@ -29,8 +29,8 @@
                     </select>
                 </div>
                 <div class="col-md-12">
-                    <label for="player-img"><b>Diagram</b></label><br>
-                    <input type="file" name="image" id="player-img" class="" required>
+                    <label for="item-img"><b>Diagram</b></label><br>
+                    <input type="file" name="image" id="item-img" class="" required>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary float-right">Add Item</button>

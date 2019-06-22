@@ -4,31 +4,31 @@
         <p class="text-center text-danger"><%= message %></p>
     <% } %>
 
-    <% if (player) { %>
-        <form class="add-player-form" action="" method="post" enctype="multipart/form-data">
+    <% if (item) { %>
+        <form class="add-item-form" action="" method="post" enctype="multipart/form-data">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="item_name">Item Name</label>
-                    <input type="text" class="form-control" name="item_name" id="item_name" value="<%= player.item_name %>" required>
+                    <input type="text" class="form-control" name="item_name" id="item_name" value="<%= item.item_name %>" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="location">Additonal Details</label>
-                    <input type="text" class="form-control" name="location" id="location" value="<%= player.location %>" required>
+                    <input type="text" class="form-control" name="location" id="location" value="<%= item.location %>" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="item_details">Location</label>
-                    <input type="text" class="form-control" name="item_details" id="item_details" value="<%= player.user_name %>" required disabled title="item_details cannot be edited.">
+                    <input type="text" class="form-control" name="item_details" id="item_details" value="<%= item.user_name %>" required disabled title="item_details cannot be edited.">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="number">Number</label>
-                    <input type="number" class="form-control" name="number" id="number" placeholder="Number" value="<%= player.number %>" required>
+                    <input type="number" class="form-control" name="number" id="number" placeholder="Number" value="<%= item.number %>" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="position">Type</label>
                     <select id="position" name="position" class="form-control" required>
-                        <option selected><%= player.position %></option>
+                        <option selected><%= item.position %></option>
                         <option>Material</option>
                         <option>Power Tool</option>
                         <option>Screws</option>

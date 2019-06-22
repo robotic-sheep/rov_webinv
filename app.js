@@ -6,8 +6,8 @@ const path = require('path');
 const app = express();
 
 const {getHomePage} = require('./routes/index');
-const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
-const port = 5000;
+const {addItemPage, addItem, deleteItem, editItem, editItemPage} = require('./routes/item');
+const port = 8080;
 
 // create connection to database
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
@@ -15,7 +15,7 @@ const db = mysql.createConnection ({
     host: 'localhost',
     user: 'vcs',
     password: 'password',
-    database: 'inventory'
+    database: 'inventory_mgmt'
 });
 
 // connect to database
@@ -39,11 +39,11 @@ app.use(fileUpload()); // configure fileupload
 // routes for the app
 
 app.get('/', getHomePage);
-app.get('/add', addPlayerPage);
-app.get('/edit/:id', editPlayerPage);
-app.get('/delete/:id', deletePlayer);
-app.post('/add', addPlayer);
-app.post('/edit/:id', editPlayer);
+app.get('/add', addItemPage);
+app.get('/edit/:id', editItemPage);
+app.get('/delete/:id', deleteItem);
+app.post('/add', addItem);
+app.post('/edit/:id', editItem);
 
 
 // set the app to listen on the port
