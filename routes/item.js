@@ -89,7 +89,7 @@ module.exports = {
  	let count = req.body.count;
 	let location = req.body.location;
 
-        let query = "UPDATE `inventory` SET `item_name` = '" + item_name + "', `category` = '" + category + "', `manufacture` = '" + manufacture + "', `model_number` = '" + model_number + "' , `price` = '" + price + "' , `count` = '" + count + "' , `location` = '" + location + "'  WHERE `items`.`id` = '" + itemId + "'";
+        let query = "UPDATE `inventory` SET `item_name` = '" + item_name + "', `category` = '" + category + "', `manufacture` = '" + manufacture + "', `model_number` = '" + model_number + "' , `price` = '" + price + "' , `count` = '" + count + "' , `location` = '" + location + "'  WHERE `inventory`.`id` = '" + itemId + "'";
         db.query(query, (err, result) => {
             if (err) {
                 return res.status(500).send(err);
@@ -99,7 +99,7 @@ module.exports = {
     },
     deleteItem: (req, res) => {
         let itemId = req.params.id;
-        let getImageQuery = 'SELECT image from `items` WHERE id = "' + itemId + '"';
+        let getImageQuery = 'SELECT image from `inventory` WHERE id = "' + itemId + '"';
         let deleteUserQuery = 'DELETE FROM inventory WHERE id = "' + itemId + '"';
 
         db.query(getImageQuery, (err, result) => {

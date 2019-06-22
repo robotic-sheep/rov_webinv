@@ -11,29 +11,35 @@
                     <label for="item_name">Item Name</label>
                     <input type="text" class="form-control" name="item_name" id="item_name" value="<%= item.item_name %>" required>
                 </div>
-                <div class="form-group col-md-4">
-                    <label for="location">Additonal Details</label>
-                    <input type="text" class="form-control" name="location" id="location" value="<%= item.location %>" required>
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="item_details">Location</label>
-                    <input type="text" class="form-control" name="item_details" id="item_details" value="<%= item.user_name %>" required disabled title="item_details cannot be edited.">
-                </div>
-            </div>
-            <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="number">Number</label>
-                    <input type="number" class="form-control" name="number" id="number" placeholder="Number" value="<%= item.number %>" required>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="position">Type</label>
-                    <select id="position" name="position" class="form-control" required>
-                        <option selected><%= item.position %></option>
+                    <label for="category">Category</label>
+                    <select id="category" name="category" class="form-control" required>
+                        <option selected><%= item.category %></option>
                         <option>Material</option>
                         <option>Power Tool</option>
                         <option>Screws</option>
                         <option>Hand Tool</option>
                     </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="manufacture">Manufacture</label>
+                    <input type="text" class="form-control" name="manufacture" id="manufacture" value="<%= item.manufacture %>">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="model_number">Model</label>
+                    <input type="text" class="form-control" name="model_number" id="model_number" value="<%= item.model_number %>">
+                </div>
+                 <div class="form-group col-md-4">
+                    <label for="price">Price</label>
+                    <input type="text" class="form-control" name="price" id="price" value="<%= item.price %>">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="count">Count</label>
+                    <input type="text" class="form-control" name="count" id="count" value="<%= item.count %>" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="location">Location</label>
+                    <input type="text" class="form-control" name="location" id="location" value="<%= item.location %>">
                 </div>
             </div>
             <button type="submit" class="btn btn-success float-right">Update Item</button>
