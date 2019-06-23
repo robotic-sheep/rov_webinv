@@ -1,0 +1,66 @@
+<% include partials/header.ejs %>
+	<div id="tab_inventory" class="container">
+	    <style>
+	      .table-wrapper {
+		  margin-top: 200px;
+		}
+		.item-img {
+		  width: 40px;
+		  height: 40px;
+		}
+		.add-item-form {
+		  margin-top: 50px;
+		}
+	    </style>
+	    <div class="page-wrapper">
+	      <nav class="navbar navbar-light bg-light">
+		<button class="w3-button w3-circle w3-teal">
+		  <a class="float-right" style = "text-decoration: none" href="/inventory/add" title="Add a New Item">+</a>
+		</button>
+	      </nav>
+	    </div>
+	</div>
+
+	<div class="container">
+        <% if (items.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Vendor</th>
+                        <th scope="col">Model</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <p: style="font-size:50px;">
+                    <% items.forEach((item, index) => { %>
+                        <tr>
+                            <th scope="row"><%= item.id %></th>
+                            <td><img src="/assets/img/<%= item.image %>" class="rounded-circle item-img" alt=""></td>
+                            <td><%= item.item_name %></td>
+                            <td><%= item.category %></td>
+                            <td><%= item.manufacture %></td>
+                            <td><%= item.model_number %></td>
+                            <td><%= item.price %></td>
+                            <td><%= item.count %></td>
+                            <td><%= item.location %></td>
+                            <td>
+                                <a href="/inventory/edit/<%= item.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/inventory/delete/<%= item.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                    </p>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No items found. Go <a href="/inventory/add" >here</a> to add an item.</p>
+        <% } %>
+    </div>

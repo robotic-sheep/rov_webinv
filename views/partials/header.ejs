@@ -5,6 +5,7 @@
 
 <head>
   <style>
+
     body {
       background: url("images/background1.jpg") no-repeat center center fixed;
       -webkit-background-size: cover;
@@ -16,104 +17,62 @@
 
   /* Style the tab */
   .tab {
-    overflow: hidden;
+    overflow: auto;
     border: none;
-    background-color: #d0e8e4;
+    background-color: #92aaa6;
   }
 
   /* Style the buttons inside the tab */
   .tab button {
-    background-color: #f2f9f8;
-    float: center;
+    background-color: #92aaa6;
+    float: none;
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 7px 120px;
     transition: 0.3s;
     font-size: 17px;
+    position: relative;
+    left:0px;
+    top: 0px;
   }
 
   /* Change background color of buttons on hover */
   .tab button:hover {
-    background-color: #95c1c1;
+    background-color: #bcdbd5;
   }
 
   /* Create an active/current tablink class */
   .tab button.active {
-    background-color: #95c1c1;
+    background-color: #bcdbd5;
   }
 
   /* Style the tab content */
   .tabcontent {
+    display: none;
     padding: 6px 12px;
     border: none;
     border-top: none;
   }
+  .button1 {padding: 8px 54px;}
+  .button2 {padding: 8px 25px;}
+  .button3 {padding: 8px 35px;}
+  .button4 {padding: 8px 53px;}
   </style>
 </head>
 
 <body>
 <div class="w3-container">
-  <img src="/images/oceanbar.jpg" alt="waves" class="w3-hover-grayscale" style="width:100%">
+  <img src="/images/oceanbar.jpg" onclick="window.location.href = '/';" alt="waves" class="w3-hover-grayscale" style="width:100%">
 </div>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <div class="tab">
-  <button class="tablinks" onclick="window.location.href = '/';">Inventory</button>
-  <button class="tablinks" onclick="opentab(event, 'tab_purchase')">Purchase Request</button>
-  <button class="tablinks" onclick="opentab(event, 'tab_cad')">Autodesk CADs</button>
-  <button class="tablinks" onclick="opentab(event, 'tab_analytics')">Analytics</button>
-</div>
-
-<div id="tab_inventory" class="tabcontent">
-    <style>
-      .table-wrapper {
-          margin-top: 200px;
-        }
-        .item-img {
-          width: 40px;
-          height: 40px;
-        }
-        .add-item-form {
-          margin-top: 50px;
-        }
-    </style>
-    <div class="page-wrapper">
-      <nav class="navbar navbar-light bg-light">
-        <a class="float-right" href="/add" title="Add a New Item">+ Add an Item</a>
-      </nav>
-    </div>
-
-<div id="tab_purchase" class="tabcontent">
-</div>
-
-<div id="tab_cad" class="tabcontent">
-  <p></p>
-</div>
-
-<div id="tab_cad" class="tabcontent">
-  <p></p>
-</div>
-
-<div id="tab_analytics" class="tabcontent">
-  <p></p>
+  <button class="tablinks button1" onclick="window.location.href = '/inventory';">Inventory</button>
+  <button class="tablinks button2" onclick="window.location.href = '/purchase';">Purchase Request</button>
+  <button class="tablinks button3" onclick="window.location.href = '/cad';">Autodesk CADs</button>
+  <button class="tablinks button4" onclick="window.location.href = '/analytics';">Analytics</button>
 </div>
 
 </body>
 
-<script>
-function opentab(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-</script>
