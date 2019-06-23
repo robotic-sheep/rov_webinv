@@ -68,60 +68,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <div class="tab">
-  <button class="tablinks button1" onclick="window.location.href = '/';">Inventory</button>
-  <button class="tablinks button2" onclick="opentab(event, 'tab_purchase')">Purchase Request</button>
-  <button class="tablinks button3" onclick="opentab(event, 'tab_cad')">Autodesk CADs</button>
-  <button class="tablinks button4" onclick="opentab(event, 'tab_analytics')">Analytics</button>
-</div>
-
-<div id="tab_inventory" class="tabcontent">
-    <style>
-      .table-wrapper {
-          margin-top: 200px;
-        }
-        .item-img {
-          width: 40px;
-          height: 40px;
-        }
-        .add-item-form {
-          margin-top: 50px;
-        }
-    </style>
-    <div class="page-wrapper">
-      <nav class="navbar navbar-light bg-light">
-        <button class="w3-button w3-circle w3-teal">
-          <a class="float-right" style = "text-decoration: none" href="/add" title="Add a New Item">+</a>
-        </button>
-      </nav>
-    </div>
-</div>
-
-<div id="tab_purchase" class="tabcontent">
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe3jMn5hmA268GOdyBpQp1z_X9HltBffpNbGD3PzFhcI5cZCg/viewform?embedded=true" width="640" height="1695" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-</div>
-
-<div id="tab_cad" class="tabcontent">
-  <p></p>
-</div>
-
-<div id="tab_analytics" class="tabcontent">
-  <p></p>
+  <button class="tablinks button1" onclick="window.location.href = '/inventory';">Inventory</button>
+  <button class="tablinks button2" onclick="window.location.href = '/purchase';">Purchase Request</button>
+  <button class="tablinks button3" onclick="window.location.href = '/cad';">Autodesk CADs</button>
+  <button class="tablinks button4" onclick="window.location.href = '/analytics';">Analytics</button>
 </div>
 
 </body>
 
-<script>
-function opentab(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-</script>
