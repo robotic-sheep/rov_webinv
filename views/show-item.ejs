@@ -1,66 +1,160 @@
+<!DOCTYPE html>
 <% include partials/header.ejs %>
-	<div id="tab_inventory" class="container">
-	    <style>
-	      .table-wrapper {
-		  margin-top: 200px;
-		}
-		.item-img {
-		  width: 40px;
-		  height: 40px;
-		}
-		.add-item-form {
-		  margin-top: 50px;
-		}
-	    </style>
-	    <div class="page-wrapper">
-	      <nav class="navbar navbar-light bg-light">
-		<button class="w3-button w3-circle w3-teal">
-		  <a class="float-right" style = "text-decoration: none" href="/inventory/add" title="Add a New Item">+</a>
-		</button>
-	      </nav>
-	    </div>
+<div id="tab_inventory" class="container">
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+	.black_overlay {
+	  display: none;
+	  position: absolute;
+	  top: 0%;
+	  left: 0%;
+	  width: 200%;
+	  height: 200%;
+	  background-color: #829b9b;
+	  z-index: 1001;
+	  -moz-opacity: 0.8;
+	  opacity: .60;
+	  filter: alpha(opacity=80);
+	}
+	.white_content {
+	  display: none;
+	  position: absolute;
+	  top: 25%;
+	  left: 25%;
+	  width: 50%;
+	  height: 50%;
+	  padding: 16px;
+	  border: 16px solid #5d9393;
+	  background-color: white;
+	  z-index: 1002;
+	  overflow: auto;
+	}
+
+.picture {
+	  vertical-align: middle;
+	  width: 90px;
+	  height: 90px;
+	  border-radius: 50%;
+		position: relative;
+	<!--
+		top: 10px;
+		left: 55px
+	-->
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+	float: left;
+	width: 25%;
+	padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 0px;}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+	  .column {
+		  width: 100%;
+		  display: block;
+		  margin-bottom: 20px;
+	  }
+  }
+
+  /* Style the counter cards */
+  .card {
+	  box-shadow: 8px 8px 20px 0 rgba(0, 0, 0, 0.1);
+	  padding: 30px;
+	  text-align: center;
+	  font-family: Optima;
+	  background-color: #e1e8e8;
+	  line-height: 0.7;
+  }
+</style>
+</head>
+<body>
+	<br>
+	<br>
+	<br>
+	<div class="w3-container">
+		<div class="bu">
+			<button class="w3-button w3-round-xxlarge w3-teal w3-hover-blue" style = "text-decoration: none" href="/inventory/add" title="Add a New Item">
+				<a style = "text-decoration: none" href="/inventory/add" title="Add a New Item"> + Add Item </a>
+			</button>
+		</div>
 	</div>
 
 	<div class="container">
-        <% if (items.length > 0) {%>
-            <table class="table table-hovered">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Vendor</th>
-                        <th scope="col">Model</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  <p: style="font-size:50px;">
-                    <% items.forEach((item, index) => { %>
-                        <tr>
-                            <th scope="row"><%= item.id %></th>
-                            <td><img src="/assets/img/<%= item.image %>" class="rounded-circle item-img" alt=""></td>
-                            <td><%= item.item_name %></td>
-                            <td><%= item.category %></td>
-                            <td><%= item.manufacture %></td>
-                            <td><%= item.model_number %></td>
-                            <td><%= item.price %></td>
-                            <td><%= item.count %></td>
-                            <td><%= item.location %></td>
-                            <td>
-                                <a href="/inventory/edit/<%= item.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
-                                <a href="/inventory/delete/<%= item.id %>" class="btn btn-sm btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                    <% }) %>
-                    </p>
-                </tbody>
-            </table>
-        <% } else { %>
-            <p class="text-center">No items found. Go <a href="/inventory/add" >here</a> to add an item.</p>
-        <% } %>
-    </div>
+		<% if (items.length > 0) {%>
+		<p: style="font-size:15px;">
+		<div class="row">
+			<% items.forEach((item, index) => { %>
+			<div class="column">
+				<br>
+				<div class="card">
+
+					<a id="item_img_btn<%=item.id %>" href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">
+
+						<img height="42" width="42" src="/assets/img/<%= item.image %>" class="picture" alt="">
+					</a>
+					<p>Item: <%=item.item_name %> </p>
+					<p>Quantity: <%= item.count %> pcs</p>
+					<p>Location: <%= item.location %> </p>
+
+					<div id="light" class="white_content" style="position: fixed; left: 250px; top: 100px;
+					width: 500px; height: 300px;">
+						<a href="javascript:void(0)" style="float:left; text-decoration: none"onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">x</a>
+						<div id="item_detail">
+							<p> this is a placeholder</p>
+						</div>
+
+					</div>
+					<script>
+						var btn = document.getElementById("item_img_btn<%=item.id %>");
+						var detail = document.getElementById("item_detail");
+						var modal = document.getElementById("light");
+						btn.onclick = function() {
+							document.getElementById('fade').style.display='block';
+							detail.innerHTML='<object type="text/html" width="400" height="200" data="/inventory/show/<%=item.id %>" ></object>';
+							modal.style.display = "block";
+						}
+					</script>
+
+
+				</div>
+			</div>
+			<% }) %>
+		</div>
+		</p>
+		<% } else { %>
+		<p class="text-center">No items found. Go <a href="/inventory/add" >here</a> to add an item.</p>
+		<% } %>
+	</div>
+	<div id="light" class="white_content">
+		<a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+	</div>
+
+	<div id="fade" class="black_overlay"></div>
+</body>
+</html>
+</div>
+</html>

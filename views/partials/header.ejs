@@ -1,78 +1,103 @@
-<!doctype html>
-<html lang="en">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+<!DOCTYPE html>
+<html>
 <head>
-  <style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<style>
+* {box-sizing: border-box}
 
-    body {
-      background: url("images/background1.jpg") no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-      font-family: Arial;
-    }
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+body {
+  background: url("images/background1.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: Arial;
+}
+/* Style tab links */
+.tablink {
+  background-color: #647a7a;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 9px 16px;
+  font-size: 17px;
+  width: 25%;
+  transition: 0.3s;
+}
 
-  /* Style the tab */
-  .tab {
-    overflow: auto;
-    border: none;
-    background-color: #92aaa6;
-  }
+.tablink:hover {
+  background-color: #a8c1bd;
+}
 
-  /* Style the buttons inside the tab */
-  .tab button {
-    background-color: #92aaa6;
-    float: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 17px;
-    position: relative;
-    left:0px;
-    top: 0px;
-  }
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
 
-  /* Change background color of buttons on hover */
-  .tab button:hover {
-    background-color: #bcdbd5;
-  }
-
-  /* Create an active/current tablink class */
-  .tab button.active {
-    background-color: #bcdbd5;
-  }
-
-  /* Style the tab content */
-  .tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: none;
-    border-top: none;
-  }
-  .button1 {padding: 8px 54px;}
-  .button2 {padding: 8px 25px;}
-  .button3 {padding: 8px 35px;}
-  .button4 {padding: 8px 53px;}
-  </style>
+#Home {background-color: none;}
+#News {background-color: none;}
+#Contact {background-color: none;}
+#About {background-color: none;}
+</style>
 </head>
-
 <body>
+  <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+      <script>
+        function onSignIn(googleUser) {
+          // Useful data for your client-side scripts:
+          var profile = googleUser.getBasicProfile();
+          console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+          console.log('Full Name: ' + profile.getName());
+          console.log('Given Name: ' + profile.getGivenName());
+          console.log('Family Name: ' + profile.getFamilyName());
+          console.log("Image URL: " + profile.getImageUrl());
+          console.log("Email: " + profile.getEmail());
+
+          // The ID token you need to pass to your backend:
+          var id_token = googleUser.getAuthResponse().id_token;
+          console.log("ID Token: " + id_token);
+        }
+      </script>
 <div class="w3-container">
   <img src="/images/oceanbar.jpg" onclick="window.location.href = '/';" alt="waves" class="w3-hover-grayscale" style="width:100%">
 </div>
+<button class="tablink" onclick="window.location.href = '/inventory';">Inventory</button>
+<button class="tablink" onclick="window.location.href = '/purchase';">Purchase Request</button>
+<button class="tablink" onclick="window.location.href = '/cad';">Autodesk CADs</button>
+<button class="tablink" onclick="window.location.href = '/analytics';">Analytics</button>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
 
-<div class="tab">
-  <button class="tablinks button1" onclick="window.location.href = '/inventory';">Inventory</button>
-  <button class="tablinks button2" onclick="window.location.href = '/purchase';">Purchase Request</button>
-  <button class="tablinks button3" onclick="window.location.href = '/cad';">Autodesk CADs</button>
-  <button class="tablinks button4" onclick="window.location.href = '/analytics';">Analytics</button>
-</div>
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
 
 </body>
-
+</html>
