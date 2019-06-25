@@ -1,0 +1,27 @@
+<html>
+<body>
+<!--
+<div id="light2" class="white_content" style="position: fixed; left: 0px; top: 0px; ">
+-->
+	<br>
+    <% if (item) { %>
+ 
+	<p>Item Name: <%= item.item_name %> </p>
+	<p>Category: <%= item.category %> </p>
+	<p>Vendor: <%= item.manufacture %> </p>
+	<p>Model: <%= item.model_number %> </p>
+	<p>Price: <%= item.price %> </p>
+	<p>Quantity: <%= item.count %> </p>
+	<p>Location: <%= item.location %> </p>
+
+	<a href="/inventory/edit/<%= item.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+	<a href="/inventory/delete/<%= item.id %>" target="/inventory" rel="noopener" class="btn btn-sm btn-danger">Delete</a>
+      </div>
+    <% } %>
+<!--
+</div>
+-->
+</body>
+</html>
+
+
