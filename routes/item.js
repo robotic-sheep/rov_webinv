@@ -121,5 +121,19 @@ module.exports = {
                 });
             });
         });
-    }
+    },
+    showItemPage: (req, res) => {
+        let itemId = req.params.id;
+        let query = "SELECT * FROM `inventory` WHERE id = '" + itemId + "' ";
+        db.query(query, (err, result) => {
+            if (err) {
+                return res.status(500).send(err);
+            }
+            res.render('show-item-detail.ejs', {
+                title: 'Show  Item Detail'
+                ,item: result[0]
+                ,message: ''
+            });
+        });
+    },
 };

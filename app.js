@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 
 const {getHomePage, getInventoryPage, getPurchasePage, getCadPage, getAnalyticsPage} = require('./routes/index');
-const {addItemPage, addItem, deleteItem, editItem, editItemPage} = require('./routes/item');
+const {addItemPage, showItemPage, addItem, deleteItem, editItem, editItemPage} = require('./routes/item');
 const port = 8080;
 
 // create connection to database
@@ -41,6 +41,7 @@ app.use(fileUpload()); // configure fileupload
 app.get('/', getHomePage);
 app.get('/inventory/', getInventoryPage);
 app.get('/inventory/add', addItemPage);
+app.get('/inventory/show/:id', showItemPage);
 app.get('/inventory/edit/:id', editItemPage);
 app.get('/inventory/delete/:id', deleteItem);
 app.post('/inventory/add', addItem);
