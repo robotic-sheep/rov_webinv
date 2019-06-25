@@ -59,6 +59,7 @@ typings/
 
 # next.js build output
 .next
+.DS_Store
 public/.DS_Store
 
 public/assets/img/*
