@@ -1,6 +1,11 @@
 <html>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+
+</style>
 <body>
-<div id="light2" class="white_content" style="line-height: 5px; ">
+<center>
+<div id="light2" class="white_content" style="line-height: 5px;">
     <br>
     <% if (item) { %>
 	<p>Item Name: <%= item.item_name %> </p>
@@ -9,12 +14,14 @@
 	<p>Model: <%= item.model_number %> </p>
 	<p>Price: <%= item.price %> </p>
 	<p>Quantity: <%= item.count %> </p>
-	<p>Location: <%= item.location %> </p>
+	<p>Location:</p> <%= item.location %> </p>
 	<br><br>
-	<a href="/inventory/edit/<%= item.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
-	<a href="/inventory/delete/<%= item.id %>" target="/inventory" rel="noopener" class="btn btn-sm btn-danger">Delete</a>
-    <% } %>
+	<div class="w3-bar">
+	<button class="w3-button w3-teal"> <a href="/inventory/edit/<%= item.id %>" style="text-decoration: none" class="btn btn-sm btn-success">Edit</a> </button>
+	<button class="w3-button w3-teal"> <a href="/inventory/delete/<%= item.id %>" target="_top" rel="noopener" style="text-decoration: none" class="btn btn-sm btn-danger">Delete</a> </button>
 </div>
+	  <% } %>
+</div>
+</center>
 </body>
 </html>
-

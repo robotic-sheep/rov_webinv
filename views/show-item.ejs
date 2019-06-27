@@ -110,18 +110,16 @@ body {
 			<% items.forEach((item, index) => { %>
 			<div class="column">
 				<br>
-				<div class="card">
+				<div class="card" style="background-color: #ddeded;">
 
 					<a id="item_img_btn<%=item.id %>" href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">
-
-						<img height="42" width="42" src="/assets/img/<%= item.image %>" class="picture" alt="">
+						<img style="height: 80px; width: 80px;" src="/assets/img/<%= item.image %>" class="picture" alt="">
 					</a>
 					<p>Item: <%=item.item_name %> </p>
 					<p>Quantity: <%= item.count %> pcs</p>
-					<p>Location: <%= item.location %> </p>
+					<p> ☉ <%= item.location %> </p>
 
-					<div id="light" class="white_content" style="position: fixed; left: 250px; top: 100px;
-					width: 500px; height: 300px;">
+					<div id="light" class="white_content" style="position: fixed; width: 500px; height: 300px; top: 50%; left: 50%; margin-top: -150px; margin-left: -250px;">
 						<a href="javascript:void(0)" style="float:left; text-decoration: none"onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">x</a>
 						<div id="item_detail">
 							<p> this is a placeholder</p>
@@ -134,7 +132,7 @@ body {
 						var modal = document.getElementById("light");
 						btn.onclick = function() {
 							document.getElementById('fade').style.display='block';
-							detail.innerHTML='<object type="text/html" width="400" height="200" data="/inventory/show/<%=item.id %>" ></object>';
+							detail.innerHTML='<object type="text/html" width="400" height="250" data="/inventory/show/<%=item.id %>" ></object>';
 							modal.style.display = "block";
 						}
 					</script>
@@ -149,10 +147,10 @@ body {
 		<p class="text-center">No items found. Go <a href="/inventory/add" >here</a> to add an item.</p>
 		<% } %>
 	</div>
+
 	<div id="light" class="white_content">
 		<a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
 	</div>
-
 	<div id="fade" class="black_overlay"></div>
 </body>
 </html>

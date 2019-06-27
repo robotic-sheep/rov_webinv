@@ -52,7 +52,7 @@ module.exports = {
                             if (err) {
                                 return res.status(500).send(err);
                             }
-                            res.redirect('/');
+                            res.redirect('/inventory/');
                         });
                     });
                 } else {
@@ -94,7 +94,7 @@ module.exports = {
             if (err) {
                 return res.status(500).send(err);
             }
-            res.redirect('/');
+            res.redirect('/inventory');
         });
     },
     deleteItem: (req, res) => {
@@ -113,11 +113,12 @@ module.exports = {
                 if (err) {
                     return res.status(500).send(err);
                 }
+
                 db.query(deleteUserQuery, (err, result) => {
                     if (err) {
                         return res.status(500).send(err);
                     }
-                    res.redirect('/');
+                    res.redirect('/inventory/');
                 });
             });
         });

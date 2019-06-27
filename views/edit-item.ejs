@@ -1,4 +1,10 @@
-<% include partials/header.ejs %>
+<html>
+<body>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<p>
+<br>
+<br>
+</p>
 <div class="container">
     <% if (message) { %>
         <p class="text-center text-danger"><%= message %></p>
@@ -12,7 +18,7 @@
                     <input type="text" class="form-control" name="item_name" id="item_name" value="<%= item.item_name %>" required>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="category">Category</label>
+                    <label for="category">Category      </label>
                     <select id="category" name="category" class="form-control" required>
                         <option selected><%= item.category %></option>
                         <option>Material</option>
@@ -22,7 +28,7 @@
                     </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="manufacture">Manufacture</label>
+                    <label for="manufacture">Manufacturer </label>
                     <input type="text" class="form-control" name="manufacture" id="manufacture" value="<%= item.manufacture %>">
                 </div>
                 <div class="form-group col-md-4">
@@ -42,7 +48,14 @@
                     <input type="text" class="form-control" name="location" id="location" value="<%= item.location %>">
                 </div>
             </div>
-            <button type="submit" class="btn btn-success float-right">Update Item</button>
+	    <button type="submit" class="btn btn-success float-right w3-button w3-teal"
+	    onclick="setTimeout(update_item_onclick, 10);">Update Item</button>
+	    <script>
+	    function update_item_onclick() {
+		    window.parent.location.reload();
+		    window.close();
+	    }
+	    </script>
         </form>
     <% } else { %>
         <p class="text-center">Item Not Found. Go <a href="/add">here</a> to add items.</p>

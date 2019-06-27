@@ -1,5 +1,26 @@
+<!DOCTYPE html>
 <% include partials/header.ejs %>
-<div id="tab_cad" class="container">
 <br>
-<p> Welcome to Valley Christian High School Ocean Discovery Program </p>
+<br>
+<br>
+<div id="tab_cad" class="container">
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style="height: 40px; float: right;"></div>
+        <script>
+          function onSignIn(googleUser) {
+            // Useful data for your client-side scripts:
+            var profile = googleUser.getBasicProfile();
+            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+            console.log('Full Name: ' + profile.getName());
+            console.log('Given Name: ' + profile.getGivenName());
+            console.log('Family Name: ' + profile.getFamilyName());
+            console.log("Image URL: " + profile.getImageUrl());
+            console.log("Email: " + profile.getEmail());
+
+            // The ID token you need to pass to your backend:
+            var id_token = googleUser.getAuthResponse().id_token;
+            console.log("ID Token: " + id_token);
+          }
+        </script>
+  <iframe src="https://docs.google.com/document/d/e/2PACX-1vTiL4ejC4zmXAkCXUhMqYSoy-o0CuDwerYZajRvKwU-jpxuAKEIwoRERSAshNZQtuPxJjnKnNajqJnY/pub?embedded=true" frameborder="0" overflow="hidden" width="370px" height="480px" margin="0px"></iframe>
 </div>
+</html>

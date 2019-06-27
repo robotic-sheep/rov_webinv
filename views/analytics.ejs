@@ -1,5 +1,8 @@
 <% include partials/header.ejs %>
 <div id="tab_analytics" class="container">
-<p> Under Contruction </p>
+  <% items.forEach(item, index) => { %>
+  <% if (item_count < 3) { %>
+      <p<%= item_name %></p>
+  <% } %>
+  <% } %>
 </div>
-
