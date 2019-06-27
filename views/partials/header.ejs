@@ -16,29 +16,34 @@ body, html {
   font-family: Arial;
 }
 body {
+  background-color: #8fb5bf;
+  <!--
   background: url("images/background1.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   font-family: Arial;
+  -->
 }
 /* Style tab links */
 .tablink {
-  background-color: #647a7a;
+  background-color: #476870;
   color: white;
+  font-family: Bebas Neue;
   float: left;
   border: none;
   outline: none;
   cursor: pointer;
   padding: 9px 16px;
-  font-size: 17px;
+  font-size: 18px;
   width: 25%;
   transition: 0.3s;
 }
 
 .tablink:hover {
-  background-color: #a8c1bd;
+  background-color: #ddeded;
+  color: #38312d;
 }
 
 /* Style the tab content (and add height:100% for full page content) */
@@ -56,13 +61,12 @@ body {
 </style>
 </head>
 <body>
-  <div class="w3-container">
-    <img src="/images/oceanbar.jpg" onclick="window.location.href = '/';" alt="waves" class="w3-hover-grayscale" style="width:100%">
+  <div class="w3-container" style="padding:0px;">
+    <img src="/images/oceanbar.jpg" onclick="window.location.href = '/';" alt="waves" class="w3-hover-grayscale" style="width: 100%; margin:0;">
   </div>
   <button class="tablink" onclick="window.location.href = '/inventory';">Inventory</button>
   <button class="tablink" onclick="window.location.href = '/purchase';">Purchase Request</button>
   <button class="tablink" onclick="window.location.href = '/cad';">Autodesk CADs</button>
   <button class="tablink" onclick="window.location.href = '/analytics';">Analytics</button>
-
 </body>
 </html>
