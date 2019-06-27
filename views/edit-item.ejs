@@ -48,7 +48,14 @@
                     <input type="text" class="form-control" name="location" id="location" value="<%= item.location %>">
                 </div>
             </div>
-            <button type="submit" class="btn btn-success float-right w3-button w3-teal"> <a href="/inventory" target="_blank" rel="noopener" style="text-decoration: none">Update Item</a> </button>
+	    <button type="submit" class="btn btn-success float-right w3-button w3-teal"
+	    onclick="setTimeout(update_item_onclick, 10);">Update Item</button>
+	    <script>
+	    function update_item_onclick() {
+		    window.parent.location.reload();
+		    window.close();
+	    }
+	    </script>
         </form>
     <% } else { %>
         <p class="text-center">Item Not Found. Go <a href="/add">here</a> to add items.</p>
