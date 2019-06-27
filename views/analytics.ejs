@@ -1,8 +1,8 @@
 <% include partials/header.ejs %>
 <div id="tab_analytics" class="container">
-  <% items.forEach((item, index) => { %>
-  <% if (item.count < 3) { %>
-      <p class="running out"><%= message %></p>
+  <% items.forEach(item, index) => { %>
+  <% if (item_count < 3) { %>
+      <p<%= item_name %></p>
   <% } %>
   <% } %>
 </div>
