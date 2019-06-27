@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
@@ -55,30 +56,13 @@ body {
 </style>
 </head>
 <body>
-  <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-      <script>
-        function onSignIn(googleUser) {
-          // Useful data for your client-side scripts:
-          var profile = googleUser.getBasicProfile();
-          console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-          console.log('Full Name: ' + profile.getName());
-          console.log('Given Name: ' + profile.getGivenName());
-          console.log('Family Name: ' + profile.getFamilyName());
-          console.log("Image URL: " + profile.getImageUrl());
-          console.log("Email: " + profile.getEmail());
-
-          // The ID token you need to pass to your backend:
-          var id_token = googleUser.getAuthResponse().id_token;
-          console.log("ID Token: " + id_token);
-        }
-      </script>
-<div class="w3-container">
-  <img src="/images/oceanbar.jpg" onclick="window.location.href = '/';" alt="waves" class="w3-hover-grayscale" style="width:100%">
-</div>
-<button class="tablink" onclick="window.location.href = '/inventory';">Inventory</button>
-<button class="tablink" onclick="window.location.href = '/purchase';">Purchase Request</button>
-<button class="tablink" onclick="window.location.href = '/cad';">Autodesk CADs</button>
-<button class="tablink" onclick="window.location.href = '/analytics';">Analytics</button>
+  <div class="w3-container">
+    <img src="/images/oceanbar.jpg" onclick="window.location.href = '/';" alt="waves" class="w3-hover-grayscale" style="width:100%">
+  </div>
+  <button class="tablink" onclick="window.location.href = '/inventory';">Inventory</button>
+  <button class="tablink" onclick="window.location.href = '/purchase';">Purchase Request</button>
+  <button class="tablink" onclick="window.location.href = '/cad';">Autodesk CADs</button>
+  <button class="tablink" onclick="window.location.href = '/analytics';">Analytics</button>
 
 </body>
 </html>
