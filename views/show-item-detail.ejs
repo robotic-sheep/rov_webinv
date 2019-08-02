@@ -5,9 +5,9 @@
 </style>
 <body>
 <center>
-<div id="light2" class="white_content" style="line-height: 5px;">
-    <br>
+<div id="light2" class="white_content" style="line-height: 8px; font-family: Minion Web; font-size: 16px;">
     <% if (item) { %>
+	<br>
 	<p>Item Name: <%= item.item_name %> </p>
 	<p>Category: <%= item.category %> </p>
 	<p>Vendor: <%= item.manufacture %> </p>
@@ -15,10 +15,9 @@
 	<p>Price: <%= item.price %> </p>
 	<p>Quantity: <%= item.count %> </p>
 	<p>Location:</p> <%= item.location %> </p>
-	<br><br>
 	<div class="w3-bar">
-	<button class="w3-button w3-teal"> <a href="/inventory/edit/<%= item.id %>" style="text-decoration: none" class="btn btn-sm btn-success">Edit</a> </button>
-	<button class="w3-button w3-teal"> <a href="/inventory/delete/<%= item.id %>" target="/inventory" rel="noopener" style="text-decoration: none" class="btn btn-sm btn-danger">Delete</a> </button>
+	<button class="w3-button w3-teal"> <a href="/inventory/edit/<%= item.id %>" style="text-decoration: none; font-family: Minion Web;" class="btn btn-sm btn-success">Edit</a> </button>
+	<button class="w3-button w3-teal"> <a href="/inventory/delete/<%= item.id %>" target="/inventory" rel="noopener" style="text-decoration: none; font-family: Minion Web;" class="btn btn-sm btn-danger">Delete</a> </button>
 </div>
 	  <% } %>
 </div>

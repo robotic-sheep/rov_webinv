@@ -8,13 +8,12 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-.line {
-    display: flex;
-    justify-content: space-between;
-}
 .topnav {
+  overflow: hidden;
+  background-color: none;
 	position: relative;
-	top: -4.5px;
+	top: -46px;
+	right: 30px;
 }
 
 .topnav a {
@@ -144,7 +143,6 @@ body {
 	  padding: 20px;
 	  text-align: center;
 	  font-family: Minion Web;
-		font-size: 16px;
 	  background-color: #e1e8e8;
 	  line-height: 0.9;
 
@@ -155,19 +153,19 @@ body {
 	<br>
 	<br>
 	<br>
-	<div class="line">
 	<div class="w3-container">
 		<div class="bu">
-			<button class="w3-button w3-round-xxlarge w3-teal w3-hover-blue" style = "text-decoration: none; position: absolute; left: 15px;" href="/inventory/add" title="Add a New Item">
+			<button class="w3-button w3-round-xxlarge w3-teal w3-hover-blue" style = "text-decoration: none" href="/inventory/add" title="Add a New Item">
 				<a style = "text-decoration: none" href="/inventory/add" title="Add a New Item"> + Add Item </a>
 			</button>
 		</div>
 	</div>
 <div class="topnav">
 	<div class="search-container">
+    <form action="/search_results.ejs">
 	<input type="text" placeholder="Search.." name="search">
-	<button><i class="fa fa-search"></i></button>
-</div>
+	<button type="submit"><i class="fa fa-search"></i> </button>
+</form>
 </div>
 </div>
 	<div class="container">

@@ -39,9 +39,29 @@
                     <label for="price">Price</label>
                     <input type="number" step="0.01" class="form-control" name="price" id="price" value="<%= item.price %>">
                 </div>
+                <div class="form-group col-md-6">
+                    <label for="count_type">Quantification</label>
+                    <select id="count_type" name="count_type" class="form-control" required>
+                        <option selected><%= item.count_type %></option>
+                        <option>Individual</option>
+                        <option>Bulk</option>
+                        <option>Volume</option>
+                    </select>
+                </div>
                 <div class="form-group col-md-4">
-                    <label for="count">Count</label>
-                    <input type="number" class="form-control" name="count" id="count" value="<%= item.count %>" required>
+                    <label for="count">Quantity</label>
+                    <% if (item.count_type == 'Volume') { %>
+                      <input type="text" class="form-control" name="count" id="count" value="<%= item.count %>" required>
+                    <% } else if (item.count_type== 'Bulk') { %>
+                      <select id="count" name="count" class="form-control" required>
+                          <option selected><%= item.count %></option>
+                          <option>High</option>
+                          <option>Medium</option>
+                          <option>Low</option>
+                      </select>
+                    <% } else { %>
+                      <input type="number" class="form-control" name="count" id="count" value="<%= item.count %>" required>
+                    <% } %>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="location">Location</label>
