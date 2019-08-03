@@ -156,20 +156,44 @@ body {
 	<br>
 	<br>
 	<div class="line">
-	<div class="w3-container">
-		<div class="bu">
-			<button class="w3-button w3-round-xxlarge w3-teal w3-hover-blue" style = "text-decoration: none; position: absolute; left: 15px;" href="/inventory/add" title="Add a New Item">
-				<a style = "text-decoration: none" href="/inventory/add" title="Add a New Item"> + Add Item </a>
-			</button>
+		<div class="w3-container">
+			<div class="bu">
+				<button class="w3-button w3-round-xxlarge w3-teal w3-hover-blue" style = "text-decoration: none; position: absolute; left: 15px;" href="/inventory/add" title="Add a New Item">
+					<a style = "text-decoration: none" href="/inventory/add" title="Add a New Item"> + Add Item </a>
+				</button>
+			</div>
+		</div>
+		<div class="topnav">
+			<div class="search-container">
+				<input type="text" placeholder="Search.." id="searchbar">
+				<button><i class="fa fa-search" onclick="doSearch()"></i></button>
+			</div>
 		</div>
 	</div>
-<div class="topnav">
-	<div class="search-container">
-	<input type="text" placeholder="Search.." name="search">
-	<button><i class="fa fa-search"></i></button>
-</div>
-</div>
-</div>
+	<script>
+		const searchbar = document.getElementById('searchbar');
+		searchbar.addEventListener('keydown', handleSearch);
+
+		function doSearch() {
+			const searchbar = document.getElementById('searchbar');
+			if (searchbar.value == "") {
+				document.location = "/inventory";
+			} else {
+				document.location = "/inventory/search?name=" + searchbar.value;
+			}
+		}
+
+		function handleSearch(e) {
+			if (e.key == 'Enter') {
+				if (e.srcElement.value == "") {
+					document.location = "/inventory";
+				} else {
+					document.location = "/inventory/search?name=" + e.srcElement.value;
+				}
+			}
+		}
+	</script>
+
 	<div class="container">
 		<% if (items.length > 0) {%>
 		<p: style="font-size:15px;">
