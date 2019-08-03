@@ -137,4 +137,20 @@ module.exports = {
             });
         });
     },
+    searchItemPage: (req, res) => {
+        let name = req.query.name;
+        let query = "SELECT * FROM `inventory` WHERE lower(item_name) like '%" + name + "%' ORDER by item_name ASC";
+
+	//console.log("Search query:" + query);
+
+        db.query(query, (err, result) => {
+            if (err) {
+                return res.redirect('/inventory');
+            }
+            res.render('show-item.ejs', {
+                title: 'Search item'
+                ,items: result
+            });
+        });
+    },
 };

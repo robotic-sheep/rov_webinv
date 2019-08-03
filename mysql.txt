@@ -5,14 +5,16 @@ use inventory_mgmt;
 
 CREATE TABLE IF NOT EXISTS `inventory` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
-  `item_name` varchar(255) NOT NULL,
-  `category` varchar(255),
-  `manufacture` varchar(20),
-  `model_number` varchar(255),
+  `item_name` varchar(200) NOT NULL,
+  `category` varchar(200),
+  `count_type` varchar(200) NOT NULL,
+  `manufacture` varchar(200),
+  `mp_number` varchar(200),
+  `mp_link` varchar(255),
+  `model_number` varchar(200),
   `price` float(11, 2),
-  `count` int(11) NOT NULL,
-  `location` varchar(255),
+  `count` varchar(200) NOT NULL,
+  `location` varchar(200),
   `image` varchar(255),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
-
